@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./layouts/Header";
+import Main from "./layouts/Main";
+import Footer from "./layouts/Footer";
+import { useState } from "react";
 
 function App() {
+  const [loggedInUser, setloggedInUser] = useState({
+    name: "Emre",
+    password: "1234",
+  });
+  const [allUsers, setAllUsers] = useState([]);
+  const [tasks, setTasks] = useState([]);
+  // handleLogin = (credentials) => {
+  //   //login chechk
+  //   // eğer kullanıcı doğru ise setLoggedInUser
+  // };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header user={loggedInUser} />
+      <Main handleLogin={handleLogin} tasks={tasks} allUsers={allUsers} />
+      <Footer />
     </div>
   );
 }
